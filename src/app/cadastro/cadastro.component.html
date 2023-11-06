@@ -116,7 +116,9 @@
         pattern="^(\d{5})(-?\d{3})$"
         minlength="8"
         maxlength="9"
-        (blur)="consultaCEP($event, f)" />
+        (blur)="consultaCEP($event, f)"
+        validadorCep
+         />
 
       <div *ngIf="(cep?.invalid && cep?.touched) || cep?.dirty">
         <app-mensagem *ngIf="cep?.errors?.['required']"
@@ -124,6 +126,9 @@
         </app-mensagem>
         <app-mensagem *ngIf="cep?.errors?.['pattern']"
           mensagem="O CEP deve seguir o seguinte modelo: 00000-000">
+        </app-mensagem>
+        <app-mensagem *ngIf="cep?.errors?.['validadorCep']"
+          mensagem="O CEP informado não existe">
         </app-mensagem>
       </div>
     </div>
